@@ -30,7 +30,7 @@ namespace Bankomat
         SQLiteCommand command;
         public Bankomat()
         {
-            ListToDelete = new List<int>();
+            
             db = new SQLiteConnection("Data Source = MyDB.db;");
             db.Open();
             Stock = new List<int>();
@@ -62,11 +62,13 @@ namespace Bankomat
         {
             handler -= del;
         }
+
+
         public void InsertCard(Card card)
         {
             if (currentcard is not null)
             {
-                handler?.Invoke("ERROR:Нельзя вставить больше 1 карты");
+                handler?.Invoke("Ошибка: Нельзя вставить больше 1 карты");
                 return;
             }
             currentcard = card;
@@ -76,7 +78,7 @@ namespace Bankomat
             currentcard = null;
         }
 
-        public int Withdraw(int amount)
+        public void Withdraw(int amount)
         {
             int amount_of_5000 = 0;
             int amount_of_2000 = 0;
@@ -122,30 +124,33 @@ namespace Bankomat
                 currentcard.ChangeBalance(-amount);
 
                 UpdateStock();
-                handler?.Invoke("Получите amount");
-                return amount;
+                handler?.Invoke($"Выдано {amount}");
+                return;
             }
 
             if (!CheckBanknotesAviability(amount))
             {
-                handler?.Invoke("В банкомате нет денег(");
+                handler?.Invoke("В банкомате нет таких денег(");
 
             }
             else
             {
                 handler?.Invoke("Недостаточно средств(");
-                return amount;
             }
-
-            return 0;
         }
         //private int GetBalance()
         //{
         //    return currentcard.RUB_Balance;
         //}
 
+        public bool CheckPIN(int PIN)
+        {
+            return currentcard.PIN.Equals(PIN);
+        }
+
         private bool CheckBanknotesAviability(int amount)
         {
+            ListToDelete = new List<int>();
             int temp = amount % 5000 % 2000 % 1000 % 500 % 200 % 100;
             List<int> requiredBanknotes = new List<int>();
 
@@ -202,6 +207,17 @@ namespace Bankomat
             {
                 TotalBalance = int.Parse(el["TotalBalance"].ToString());
             }
+        }
+
+        public void DepositMoney(StateOfCash state)
+        {
+            amount_of_5000 += state.amount_of_5000;
+            amount_of_2000 += state.amount_of_2000;
+            amount_of_1000 += state.amount_of_1000;
+            amount_of_500 += state.amount_of_500;
+            amount_of_200 += state.amount_of_200;
+            amount_of_100 += state.amount_of_100;
+            UpdateStock();
         }
 
         void GetData()

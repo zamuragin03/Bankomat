@@ -33,7 +33,7 @@ namespace Bankomat
 
         void UpdateCardBalance()
         {
-            command = new SQLiteCommand($"update Card set RUB_Balance={RUB_Balance}" +
+            command = new SQLiteCommand($"update Card set RUB_Balance={RUB_Balance} " +
                                         $"where CARDNUMBER='{CARDNUMBER}'", db);
             command.ExecuteNonQuery();
         }
