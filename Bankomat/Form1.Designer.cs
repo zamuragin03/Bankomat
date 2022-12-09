@@ -30,8 +30,13 @@ namespace Bankomat
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button14 = new System.Windows.Forms.Button();
+            this.BalanceLabel = new System.Windows.Forms.Label();
+            this.WhatToDoLabel = new System.Windows.Forms.Label();
+            this.SBERLAbel = new System.Windows.Forms.Label();
             this.passbox = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button13 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
@@ -63,21 +68,17 @@ namespace Bankomat
             this.amount_of_100 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.TotalBalance = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Infolabel = new System.Windows.Forms.RichTextBox();
-            this.button13 = new System.Windows.Forms.Button();
-            this.SBERLAbel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.WhatToDoLabel = new System.Windows.Forms.Label();
-            this.BalanceLabel = new System.Windows.Forms.Label();
-            this.button14 = new System.Windows.Forms.Button();
             this.depositPanel = new System.Windows.Forms.Panel();
-            this.button15 = new System.Windows.Forms.Button();
-            this.button16 = new System.Windows.Forms.Button();
-            this.button17 = new System.Windows.Forms.Button();
+            this.button21 = new System.Windows.Forms.Button();
+            this.button18 = new System.Windows.Forms.Button();
             this.button19 = new System.Windows.Forms.Button();
             this.button20 = new System.Windows.Forms.Button();
-            this.button18 = new System.Windows.Forms.Button();
-            this.button21 = new System.Windows.Forms.Button();
+            this.button17 = new System.Windows.Forms.Button();
+            this.button16 = new System.Windows.Forms.Button();
+            this.button15 = new System.Windows.Forms.Button();
             this.depositedLabel = new System.Windows.Forms.Label();
+            this.button22 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.depositPanel.SuspendLayout();
@@ -98,6 +99,51 @@ namespace Bankomat
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(391, 412);
             this.panel1.TabIndex = 1;
+            // 
+            // button14
+            // 
+            this.button14.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.button14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button14.Location = new System.Drawing.Point(299, 176);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(89, 49);
+            this.button14.TabIndex = 7;
+            this.button14.Text = "Завершить сеанс";
+            this.button14.UseVisualStyleBackColor = false;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
+            // 
+            // BalanceLabel
+            // 
+            this.BalanceLabel.AutoSize = true;
+            this.BalanceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BalanceLabel.Location = new System.Drawing.Point(88, 104);
+            this.BalanceLabel.Name = "BalanceLabel";
+            this.BalanceLabel.Size = new System.Drawing.Size(99, 20);
+            this.BalanceLabel.TabIndex = 6;
+            this.BalanceLabel.Text = "__________";
+            // 
+            // WhatToDoLabel
+            // 
+            this.WhatToDoLabel.AutoSize = true;
+            this.WhatToDoLabel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.WhatToDoLabel.Font = new System.Drawing.Font("Adobe Arabic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.WhatToDoLabel.Location = new System.Drawing.Point(0, 26);
+            this.WhatToDoLabel.Name = "WhatToDoLabel";
+            this.WhatToDoLabel.Size = new System.Drawing.Size(0, 26);
+            this.WhatToDoLabel.TabIndex = 5;
+            this.WhatToDoLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // SBERLAbel
+            // 
+            this.SBERLAbel.AutoSize = true;
+            this.SBERLAbel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.SBERLAbel.Font = new System.Drawing.Font("Adobe Arabic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SBERLAbel.Location = new System.Drawing.Point(0, 0);
+            this.SBERLAbel.Name = "SBERLAbel";
+            this.SBERLAbel.Size = new System.Drawing.Size(114, 26);
+            this.SBERLAbel.TabIndex = 4;
+            this.SBERLAbel.Text = "СБЕРБАНК";
+            this.SBERLAbel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // passbox
             // 
@@ -129,6 +175,17 @@ namespace Bankomat
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(318, 167);
             this.panel2.TabIndex = 2;
+            // 
+            // button13
+            // 
+            this.button13.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button13.Location = new System.Drawing.Point(166, 110);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(45, 45);
+            this.button13.TabIndex = 12;
+            this.button13.Text = "0";
+            this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.digitbuttons);
             // 
             // button12
             // 
@@ -409,29 +466,6 @@ namespace Bankomat
             this.Infolabel.TabIndex = 6;
             this.Infolabel.Text = "";
             // 
-            // button13
-            // 
-            this.button13.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button13.Location = new System.Drawing.Point(166, 110);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(45, 45);
-            this.button13.TabIndex = 12;
-            this.button13.Text = "0";
-            this.button13.UseVisualStyleBackColor = true;
-            this.button13.Click += new System.EventHandler(this.digitbuttons);
-            // 
-            // SBERLAbel
-            // 
-            this.SBERLAbel.AutoSize = true;
-            this.SBERLAbel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.SBERLAbel.Font = new System.Drawing.Font("Adobe Arabic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SBERLAbel.Location = new System.Drawing.Point(0, 0);
-            this.SBERLAbel.Name = "SBERLAbel";
-            this.SBERLAbel.Size = new System.Drawing.Size(114, 26);
-            this.SBERLAbel.TabIndex = 4;
-            this.SBERLAbel.Text = "СБЕРБАНК";
-            this.SBERLAbel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -440,39 +474,6 @@ namespace Bankomat
             this.label1.Size = new System.Drawing.Size(119, 13);
             this.label1.TabIndex = 7;
             this.label1.Text = "Состояние банкомата";
-            // 
-            // WhatToDoLabel
-            // 
-            this.WhatToDoLabel.AutoSize = true;
-            this.WhatToDoLabel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.WhatToDoLabel.Font = new System.Drawing.Font("Adobe Arabic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.WhatToDoLabel.Location = new System.Drawing.Point(0, 26);
-            this.WhatToDoLabel.Name = "WhatToDoLabel";
-            this.WhatToDoLabel.Size = new System.Drawing.Size(0, 26);
-            this.WhatToDoLabel.TabIndex = 5;
-            this.WhatToDoLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // BalanceLabel
-            // 
-            this.BalanceLabel.AutoSize = true;
-            this.BalanceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BalanceLabel.Location = new System.Drawing.Point(88, 104);
-            this.BalanceLabel.Name = "BalanceLabel";
-            this.BalanceLabel.Size = new System.Drawing.Size(99, 20);
-            this.BalanceLabel.TabIndex = 6;
-            this.BalanceLabel.Text = "__________";
-            // 
-            // button14
-            // 
-            this.button14.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.button14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button14.Location = new System.Drawing.Point(299, 176);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(89, 49);
-            this.button14.TabIndex = 7;
-            this.button14.Text = "Завершить сеанс";
-            this.button14.UseVisualStyleBackColor = false;
-            this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
             // depositPanel
             // 
@@ -490,38 +491,29 @@ namespace Bankomat
             this.depositPanel.TabIndex = 8;
             this.depositPanel.Visible = false;
             // 
-            // button15
+            // button21
             // 
-            this.button15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button15.Location = new System.Drawing.Point(3, 7);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(50, 23);
-            this.button15.TabIndex = 0;
-            this.button15.Text = "5000";
-            this.button15.UseVisualStyleBackColor = true;
-            this.button15.Click += new System.EventHandler(this.AddSumm);
+            this.button21.AutoSize = true;
+            this.button21.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.button21.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button21.Location = new System.Drawing.Point(134, 63);
+            this.button21.Name = "button21";
+            this.button21.Size = new System.Drawing.Size(190, 38);
+            this.button21.TabIndex = 6;
+            this.button21.Text = "Внести сумму";
+            this.button21.UseVisualStyleBackColor = false;
+            this.button21.Click += new System.EventHandler(this.AddSumm);
             // 
-            // button16
+            // button18
             // 
-            this.button16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button16.Location = new System.Drawing.Point(84, 7);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(50, 23);
-            this.button16.TabIndex = 1;
-            this.button16.Text = "2000";
-            this.button16.UseVisualStyleBackColor = true;
-            this.button16.Click += new System.EventHandler(this.AddSumm);
-            // 
-            // button17
-            // 
-            this.button17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button17.Location = new System.Drawing.Point(165, 7);
-            this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(50, 23);
-            this.button17.TabIndex = 2;
-            this.button17.Text = "1000";
-            this.button17.UseVisualStyleBackColor = true;
-            this.button17.Click += new System.EventHandler(this.AddSumm);
+            this.button18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button18.Location = new System.Drawing.Point(399, 7);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(50, 23);
+            this.button18.TabIndex = 5;
+            this.button18.Text = "100";
+            this.button18.UseVisualStyleBackColor = true;
+            this.button18.Click += new System.EventHandler(this.AddSumm);
             // 
             // button19
             // 
@@ -545,29 +537,38 @@ namespace Bankomat
             this.button20.UseVisualStyleBackColor = true;
             this.button20.Click += new System.EventHandler(this.AddSumm);
             // 
-            // button18
+            // button17
             // 
-            this.button18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button18.Location = new System.Drawing.Point(399, 7);
-            this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(50, 23);
-            this.button18.TabIndex = 5;
-            this.button18.Text = "100";
-            this.button18.UseVisualStyleBackColor = true;
-            this.button18.Click += new System.EventHandler(this.AddSumm);
+            this.button17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button17.Location = new System.Drawing.Point(165, 7);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(50, 23);
+            this.button17.TabIndex = 2;
+            this.button17.Text = "1000";
+            this.button17.UseVisualStyleBackColor = true;
+            this.button17.Click += new System.EventHandler(this.AddSumm);
             // 
-            // button21
+            // button16
             // 
-            this.button21.AutoSize = true;
-            this.button21.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.button21.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button21.Location = new System.Drawing.Point(134, 63);
-            this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(190, 38);
-            this.button21.TabIndex = 6;
-            this.button21.Text = "Внести сумму";
-            this.button21.UseVisualStyleBackColor = false;
-            this.button21.Click += new System.EventHandler(this.AddSumm);
+            this.button16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button16.Location = new System.Drawing.Point(84, 7);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(50, 23);
+            this.button16.TabIndex = 1;
+            this.button16.Text = "2000";
+            this.button16.UseVisualStyleBackColor = true;
+            this.button16.Click += new System.EventHandler(this.AddSumm);
+            // 
+            // button15
+            // 
+            this.button15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button15.Location = new System.Drawing.Point(3, 7);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(50, 23);
+            this.button15.TabIndex = 0;
+            this.button15.Text = "5000";
+            this.button15.UseVisualStyleBackColor = true;
+            this.button15.Click += new System.EventHandler(this.AddSumm);
             // 
             // depositedLabel
             // 
@@ -578,11 +579,23 @@ namespace Bankomat
             this.depositedLabel.TabIndex = 9;
             this.depositedLabel.Text = "Внесено: ";
             // 
+            // button22
+            // 
+            this.button22.AutoSize = true;
+            this.button22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button22.Location = new System.Drawing.Point(209, 527);
+            this.button22.Name = "button22";
+            this.button22.Size = new System.Drawing.Size(187, 30);
+            this.button22.TabIndex = 10;
+            this.button22.Text = "Состояние банкомата";
+            this.button22.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1065, 569);
+            this.Controls.Add(this.button22);
             this.Controls.Add(this.depositedLabel);
             this.Controls.Add(this.depositPanel);
             this.Controls.Add(this.label1);
@@ -655,6 +668,7 @@ namespace Bankomat
         private System.Windows.Forms.Button button15;
         private System.Windows.Forms.Button button21;
         private System.Windows.Forms.Label depositedLabel;
+        private System.Windows.Forms.Button button22;
     }
 }
 

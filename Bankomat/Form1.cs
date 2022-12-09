@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 
@@ -17,6 +18,7 @@ namespace Bankomat
     {
         LoginSucces,
         TypingSum,
+        Withdrawing,
         Unstated,
     }
     public partial class Form1 : Form
@@ -55,7 +57,8 @@ namespace Bankomat
 
         void getinfo(string message)
         {
-            Infolabel.Text += message + "\n";
+            Infolabel.Text += message + "\n"; 
+            Infolabel.Text += "Тек. состояние " + state + "\n";
         }
 
 
