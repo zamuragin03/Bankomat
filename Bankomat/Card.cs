@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Bankomat
 {
-    class Card
+    public class Card
     {
         public int RUB_Balance { get; set; }
         public int PIN { get; set; }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Bankomat
 {
-    class Bankomat
+    public class Bankomat
     {
         private Card currentcard;
         private int amount_of_5000;

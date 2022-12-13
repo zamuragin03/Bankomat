@@ -56,6 +56,7 @@ namespace Bankomat
         void getinfo(string message)
         {
             Infolabel.Text += message + "\n";
+            Infolabel.Text += "Тек. состояние " + state + "\n";
         }
 
 
@@ -220,6 +221,7 @@ namespace Bankomat
             BalanceLabel.Text = card.RUB_Balance + "RUB";
             WhatToDoLabel.Text = "Выберите действие:";
             SBERLAbel.Text = "Здравствуйте, " + card.CardHolder;
+            state = State.LoginSucces;
         }
 
         private void button14_Click(object sender, EventArgs e)
@@ -281,13 +283,19 @@ namespace Bankomat
                     WhatToDoLabel.Text = "Выберите действие:";
                     SBERLAbel.Text = "Здравствуйте! ";
                     depositedLabel.Text = "";
-
+                    depositedSum = 0;
                     break;
 
             }
 
             depositedLabel.Text = "Внесено: " + depositedSum;
             getinfo("Добавлено "+btn.Text);
+        }
+
+        private void button22_Click(object sender, EventArgs e)
+        {
+            StatForm f = new StatForm(bankomat);
+            f.Show();
         }
     }
 }

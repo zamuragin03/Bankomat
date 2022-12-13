@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Bankomat
 {
-    class StateOfCash
+    public class StateOfCash
     {
         public int amount_of_5000 { get; set; }
         public int amount_of_2000 { get; set; }
