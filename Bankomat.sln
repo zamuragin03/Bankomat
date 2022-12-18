@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.33027.164
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bankomat", "Bankomat\Bankomat.csproj", "{BA1FD2EE-51B3-4BE2-8F88-4F0B27C53D21}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "testapp", "testapp\testapp.csproj", "{A347F47F-D6D7-48BE-9CCD-29DE13C1498E}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,15 +29,6 @@ Global
 		{BA1FD2EE-51B3-4BE2-8F88-4F0B27C53D21}.Test|Any CPU.Build.0 = Debug|Any CPU
 		{BA1FD2EE-51B3-4BE2-8F88-4F0B27C53D21}.Test|x64.ActiveCfg = Debug|x64
 		{BA1FD2EE-51B3-4BE2-8F88-4F0B27C53D21}.Test|x64.Build.0 = Debug|x64
-		{A347F47F-D6D7-48BE-9CCD-29DE13C1498E}.Debug|Any CPU.ActiveCfg = Release|Any CPU
-		{A347F47F-D6D7-48BE-9CCD-29DE13C1498E}.Debug|x64.ActiveCfg = Release|Any CPU
-		{A347F47F-D6D7-48BE-9CCD-29DE13C1498E}.My|Any CPU.ActiveCfg = Release|Any CPU
-		{A347F47F-D6D7-48BE-9CCD-29DE13C1498E}.My|x64.ActiveCfg = Release|Any CPU
-		{A347F47F-D6D7-48BE-9CCD-29DE13C1498E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A347F47F-D6D7-48BE-9CCD-29DE13C1498E}.Release|x64.ActiveCfg = Release|Any CPU
-		{A347F47F-D6D7-48BE-9CCD-29DE13C1498E}.Release|x64.Build.0 = Release|Any CPU
-		{A347F47F-D6D7-48BE-9CCD-29DE13C1498E}.Test|Any CPU.ActiveCfg = Release|Any CPU
-		{A347F47F-D6D7-48BE-9CCD-29DE13C1498E}.Test|x64.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -19,12 +19,20 @@ namespace Bankomat
         TypingSum,
         Unstated,
     }
+
+    public enum OperationType
+    {
+        Внесение,
+        Снятие
+    }
     public partial class Form1 : Form
     {
         private List<Card> users;
         private Card card;
 
         private State state;
+        private OperationType type;
+
         private SQLiteConnection db;
         SQLiteDataReader reader;
         SQLiteCommand command;
@@ -217,6 +225,9 @@ namespace Bankomat
             bankomat.Withdraw(amount);
             FillBankomatView();
             FillCardList();
+            type = OperationType.Снятие;
+            Bill b = new(type, amount, card.CARDNUMBER,card.CardHolder);
+            b.Show();
             passbox.Text = "";
             BalanceLabel.Text = card.RUB_Balance + "RUB";
             WhatToDoLabel.Text = "Выберите действие:";
@@ -280,6 +291,9 @@ namespace Bankomat
                     BalanceLabel.Text = card.RUB_Balance + "RUB";
                     state = State.LoginSucces;
                     depositPanel.Visible = false;
+                    type = OperationType.Внесение;
+                    Bill b = new(type, depositedSum, card.CARDNUMBER, card.CardHolder);
+                    b.Show();
                     WhatToDoLabel.Text = "Выберите действие:";
                     SBERLAbel.Text = "Здравствуйте! ";
                     depositedLabel.Text = "";

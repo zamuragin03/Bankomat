@@ -11,12 +11,7 @@ namespace Bankomat
     public class Bankomat
     {
         private Card currentcard;
-        private int amount_of_5000;
-        private int amount_of_2000;
-        private int amount_of_1000;
-        private int amount_of_500;
-        private int amount_of_200;
-        private int amount_of_100;
+        private StateOfCash Cash;
 
         private int TotalBalance;
 
@@ -33,21 +28,23 @@ namespace Bankomat
             
             db = new SQLiteConnection("Data Source = MyDB.db;");
             db.Open();
+            
             Stock = new List<int>();
-            GetData();
+            Cash = new();
 
+            GetData();
         }
 
         public string[] GetBankomatInfo()
         {
             string[] tmp =
             {
-                amount_of_5000.ToString(),
-                amount_of_2000.ToString(),
-                amount_of_1000.ToString(),
-                amount_of_500.ToString(),
-                amount_of_200.ToString(),
-                amount_of_100.ToString(),
+                Cash.amount_of_5000.ToString(),
+                Cash.amount_of_2000.ToString(),
+                Cash.amount_of_1000.ToString(),
+                Cash.amount_of_500.ToString(),
+                Cash.amount_of_200.ToString(),
+                Cash.amount_of_100.ToString(),
                 TotalBalance.ToString()
             };
             return tmp;
@@ -80,12 +77,8 @@ namespace Bankomat
 
         public void Withdraw(int amount)
         {
-            int amount_of_5000 = 0;
-            int amount_of_2000 = 0;
-            int amount_of_1000 = 0;
-            int amount_of_500 = 0;
-            int amount_of_200 = 0;
-            int amount_of_100 = 0;
+
+            StateOfCash tempCash = new();
 
 
             if (amount <= currentcard.RUB_Balance & CheckBanknotesAviability(amount))
@@ -95,32 +88,32 @@ namespace Bankomat
                     switch (val)
                     {
                         case 5000:
-                            amount_of_5000++;
+                            tempCash.amount_of_5000++;
                             break;
                         case 2000:
-                            amount_of_2000++;
+                            tempCash.amount_of_2000++;
                             break;
                         case 1000:
-                            amount_of_1000++;
+                            tempCash.amount_of_1000++;
                             break;
                         case 500:
-                            amount_of_500++;
+                            tempCash.amount_of_500++;
                             break;
                         case 200:
-                            amount_of_200++;
+                            tempCash.amount_of_200++;
                             break;
                         case 100:
-                            amount_of_100++;
+                            tempCash.amount_of_100++;
                             break;
                     }
                 }
 
-                this.amount_of_5000 -= amount_of_5000;
-                this.amount_of_2000 -= amount_of_2000;
-                this.amount_of_1000 -= amount_of_1000;
-                this.amount_of_500 -= amount_of_500;
-                this.amount_of_200 -= amount_of_200;
-                this.amount_of_100 -= amount_of_100;
+                this.Cash.amount_of_5000 -= tempCash.amount_of_5000;
+                this.Cash.amount_of_2000 -= tempCash.amount_of_2000;
+                this.Cash.amount_of_1000 -= tempCash.amount_of_1000;
+                this.Cash.amount_of_500 -= tempCash.amount_of_500;
+                this.Cash.amount_of_200 -= tempCash.amount_of_200;
+                this.Cash.amount_of_100 -= tempCash.amount_of_100;
                 currentcard.ChangeBalance(-amount);
 
                 UpdateStock();
@@ -138,11 +131,6 @@ namespace Bankomat
                 handler?.Invoke("Недостаточно средств(");
             }
         }
-        //private int GetBalance()
-        //{
-        //    return currentcard.RUB_Balance;
-        //}
-
         public bool CheckPIN(int PIN)
         {
             return currentcard.PIN.Equals(PIN);
@@ -188,17 +176,17 @@ namespace Bankomat
         }
         void UpdateStock()
         {
-            command = new SQLiteCommand($"update Bankomat set amount_of_5000={amount_of_5000}", db);
+            command = new SQLiteCommand($"update Bankomat set amount_of_5000={Cash.amount_of_5000}", db);
             command.ExecuteNonQuery();
-            command = new SQLiteCommand($"update Bankomat set amount_of_2000={amount_of_2000}", db);
+            command = new SQLiteCommand($"update Bankomat set amount_of_2000={Cash.amount_of_2000}", db);
             command.ExecuteNonQuery();
-            command = new SQLiteCommand($"update Bankomat set amount_of_1000={amount_of_1000}", db);
+            command = new SQLiteCommand($"update Bankomat set amount_of_1000={Cash.amount_of_1000}", db);
             command.ExecuteNonQuery();
-            command = new SQLiteCommand($"update Bankomat set amount_of_500={amount_of_500}", db);
+            command = new SQLiteCommand($"update Bankomat set amount_of_500={Cash.amount_of_500}", db);
             command.ExecuteNonQuery();
-            command = new SQLiteCommand($"update Bankomat set amount_of_200={amount_of_200}", db);
+            command = new SQLiteCommand($"update Bankomat set amount_of_200={Cash.amount_of_200}", db);
             command.ExecuteNonQuery();
-            command = new SQLiteCommand($"update Bankomat set amount_of_100={amount_of_100}", db);
+            command = new SQLiteCommand($"update Bankomat set amount_of_100={Cash.amount_of_100}", db);
             command.ExecuteNonQuery();
 
             command = new SQLiteCommand($"select TotalBalance from Bankomat", db);
@@ -211,12 +199,12 @@ namespace Bankomat
 
         public void DepositMoney(StateOfCash state)
         {
-            amount_of_5000 += state.amount_of_5000;
-            amount_of_2000 += state.amount_of_2000;
-            amount_of_1000 += state.amount_of_1000;
-            amount_of_500 += state.amount_of_500;
-            amount_of_200 += state.amount_of_200;
-            amount_of_100 += state.amount_of_100;
+            Cash.amount_of_5000 += state.amount_of_5000;
+            Cash.amount_of_2000 += state.amount_of_2000;
+            Cash.amount_of_1000 += state.amount_of_1000;
+            Cash.amount_of_500 += state.amount_of_500;
+            Cash.amount_of_200 += state.amount_of_200;
+            Cash.amount_of_100 += state.amount_of_100;
             UpdateStock();
         }
 
@@ -226,20 +214,20 @@ namespace Bankomat
             reader = command.ExecuteReader();
             foreach (DbDataRecord el in reader)
             {
-                amount_of_5000 = int.Parse(el["amount_of_5000"].ToString());
-                amount_of_2000 = int.Parse(el["amount_of_2000"].ToString());
-                amount_of_1000 = int.Parse(el["amount_of_1000"].ToString());
-                amount_of_500 = int.Parse(el["amount_of_500"].ToString());
-                amount_of_200 = int.Parse(el["amount_of_200"].ToString());
-                amount_of_100 = int.Parse(el["amount_of_100"].ToString());
+                Cash.amount_of_5000 = int.Parse(el["amount_of_5000"].ToString());
+                Cash.amount_of_2000 = int.Parse(el["amount_of_2000"].ToString());
+                Cash.amount_of_1000 = int.Parse(el["amount_of_1000"].ToString());
+                Cash.amount_of_500 = int.Parse(el["amount_of_500"].ToString());
+                Cash.amount_of_200 = int.Parse(el["amount_of_200"].ToString());
+                Cash.amount_of_100 = int.Parse(el["amount_of_100"].ToString());
                 TotalBalance = int.Parse(el["TotalBalance"].ToString());
             }
-            var items1 = Enumerable.Repeat(5000, amount_of_5000);
-            var items2 = Enumerable.Repeat(2000, amount_of_2000);
-            var items3 = Enumerable.Repeat(1000, amount_of_1000);
-            var items4 = Enumerable.Repeat(500, amount_of_500);
-            var items5 = Enumerable.Repeat(200, amount_of_200);
-            var items6 = Enumerable.Repeat(100, amount_of_100);
+            var items1 = Enumerable.Repeat(5000, Cash.amount_of_5000);
+            var items2 = Enumerable.Repeat(2000, Cash.amount_of_2000);
+            var items3 = Enumerable.Repeat(1000, Cash.amount_of_1000);
+            var items4 = Enumerable.Repeat(500, Cash.amount_of_500);
+            var items5 = Enumerable.Repeat(200, Cash.amount_of_200);
+            var items6 = Enumerable.Repeat(100, Cash.amount_of_100);
 
             Stock.AddRange(items1);
             Stock.AddRange(items2);

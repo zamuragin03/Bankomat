@@ -19,6 +19,7 @@ namespace Bankomat
             this.DB = DB;
 
             var info = DB.GetBankomatInfo();
+            chart1.Series["s1"].IsValueShownAsLabel = true;
             chart1.Series["s1"].Points.AddXY("5000", int.Parse(info[0]));
             chart1.Series["s1"].Points.AddXY("2000", int.Parse(info[1]));
             chart1.Series["s1"].Points.AddXY("1000", int.Parse(info[2]));
